@@ -6,7 +6,7 @@ from django.views.generic import ListView, DetailView
 # Создаем класс для вывода всех новостей из бд наследуемся от ListView
 class PostList(ListView):
     model = Post
-    ordering = 'title'
+    ordering = '-dateCreation'
     template_name = 'PostList.html'
     context_object_name = 'PostList'
 
