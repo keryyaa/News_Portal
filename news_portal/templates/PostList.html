@@ -1,0 +1,32 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+{% load censor_filter %}
+
+{% block title %}
+<title>Новости</title>
+{% endblock title %}
+
+
+{% block content %}
+<h1>Новости которые мы заслужили.</h1>
+<h4>Количество новостей: {{ PostList | length }}</h4>
+<hr>
+{% if PostList %}
+    <table>
+        <tr>
+            <td> Заголовок </td>
+            <td> Дата публикации </td>
+            <td> Cтатья </td>
+        </tr>
+        {% for post in PostList %}
+        <tr>
+            <td>{{ post.title | censor_text }}</td>
+            <td>{{ post.dateCreation | date:'d M. Y' }}</td>
+            <td>{{ post.text | truncatechars:20 | censor_text }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <h2> Новостей нет </h2>
+{% endif %}
+{% endblock content %}

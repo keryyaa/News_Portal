@@ -1,0 +1,15 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+
+<!-- Название у нас будет products -->
+{% block title %}
+<title> {{PostDetail.title}} </title>
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим все товары -->
+{% block content %}
+<h1> {{PostDetail.title }} </h1>
+<hr>
+<h5>{{ PostDetail.text }}</h5>
+<p> Дата публикации: {{ PostDetail.dateCreation|date:'d M. Y'}}</p>
+{% endblock content %}
