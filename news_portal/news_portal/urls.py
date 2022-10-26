@@ -20,5 +20,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('pages/', include('django.contrib.flatpages.urls')),
     # регистрируем url для /news_one
-    path('news/', include('news_one.urls'))
+    path('news/', include('news_one.urls')),
+    # Добовляем создание аккаунтов
+    path("accounts/", include("allauth.urls")),
+
 ]
